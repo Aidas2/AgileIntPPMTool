@@ -1,0 +1,5 @@
+ git bash:
+ npm install -g create-react-app
+ create-react-app ppmtool-react-client
+
+ 
