@@ -15,3 +15,6 @@
 
  Auto Import - ES6, TS, JSX, TSX
  Reactjs code snippets
+
+ npm install bootstrap
+ Ctrl + Shift + L
