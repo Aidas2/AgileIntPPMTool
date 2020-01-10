@@ -1,5 +1,17 @@
  git bash:
+ apt-get install npm nodejs
  npm install -g create-react-app
+ npm install -g windows-build-tools
+
+ node --version
+ npm --version
+ create-react-app --version
+
  create-react-app ppmtool-react-client
 
- 
+ npm install
+ npm run build
+ npm start
+
+ Auto Import - ES6, TS, JSX, TSX
+ Reactjs code snippets
