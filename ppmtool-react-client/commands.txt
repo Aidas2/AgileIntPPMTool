@@ -2,6 +2,8 @@
  apt-get install npm nodejs
  npm install -g create-react-app
  npm install -g windows-build-tools
+ npm install react-router-dom
+ npm install react-router-dom@4.3.1
 
  node --version
  npm --version
@@ -14,7 +16,7 @@
  npm start
 
  Auto Import - ES6, TS, JSX, TSX
- Reactjs code snippets
+ Reactjs code snippets (rcc rfc)
 
  npm install bootstrap
  Ctrl + Shift + L
