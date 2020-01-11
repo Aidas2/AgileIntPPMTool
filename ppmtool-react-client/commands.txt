@@ -15,8 +15,17 @@
  npm run build
  npm start
 
- Auto Import - ES6, TS, JSX, TSX
- Reactjs code snippets (rcc rfc)
+Auto Import - ES6, TS, JSX, TSX
+Auto-Save on Window Change
+Babel ES6/ES7
+Bracket Pair Colorizer
+ES7 React/Redux/GraphQL/React-Native snippets
+JavaScript (ES6) code snippets
+Live Server
+Node.js Modules Intellisense
+Path Intellisense
+Prettier - Code formatter
+Reactjs code snippets (rcc rfc)
 
  npm install bootstrap
  Ctrl + Shift + L
