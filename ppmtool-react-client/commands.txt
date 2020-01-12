@@ -34,3 +34,5 @@ Reactjs code snippets (rcc rfc)
  npm install --save redux
  npm install --save react-redux
  npm install --save axios 
+
+ npm install classnames
