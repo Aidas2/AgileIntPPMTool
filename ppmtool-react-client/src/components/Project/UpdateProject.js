@@ -24,7 +24,7 @@ class UpdateProject extends Component {
                     className="form-control form-control-lg "
                     placeholder="Project Name"
                     name="projectName"
-                    value={this.state.projectName}
+                    // value={this.state.projectName}
                   />
                 </div>
                 <div className="form-group">
