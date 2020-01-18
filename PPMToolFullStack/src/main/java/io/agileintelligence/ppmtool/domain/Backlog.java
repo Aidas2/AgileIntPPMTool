@@ -23,6 +23,8 @@ public class Backlog {
     private Project project;       // bidirectional relationships!!!
 
     //OneToMany projecttasks
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "backlog")     // "backlog" must match name of object (Backlog backlog)!!!
+    private List<ProjectTask> projectTasks = new ArrayList<>();     // initialise array!!!
 
 
     public Backlog() {
@@ -59,5 +61,13 @@ public class Backlog {
 
     public void setProject(Project project) {
         this.project = project;
+    }
+
+    public List<ProjectTask> getProjectTasks() {
+        return projectTasks;
+    }
+
+    public void setProjectTasks(List<ProjectTask> projectTasks) {
+        this.projectTasks = projectTasks;
     }
 }
