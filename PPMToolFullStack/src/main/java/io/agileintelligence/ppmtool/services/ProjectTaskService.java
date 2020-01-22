@@ -109,10 +109,14 @@ public class ProjectTaskService {
     public void deletePTByProjectSequence(String backlog_id, String pt_id){
         ProjectTask projectTask = findPTByProjectSequence(backlog_id, pt_id);   // shortcut (performs all validations)
 
-        Backlog backlog = projectTask.getBacklog();
-        List<ProjectTask> pts = backlog.getProjectTasks();
-        pts.remove(projectTask);    // should remove relationships  @OneToMany(cascade = CascadeType.ALL,..., but didn't ?!
-        backlogRepository.save(backlog);
+//        Backlog backlog = projectTask.getBacklog();
+//        List<ProjectTask> pts = backlog.getProjectTasks();
+//        pts.remove(projectTask);    // should remove relationships  @OneToMany(cascade = CascadeType.ALL,..., but didn't ?!
+//        backlogRepository.save(backlog);
+//        SOLVED!!!
+//        remove 'cascade = CascadeType.REFRESH' in ProjectTask.java
+//        change 'cascade = CascadeType.ALL' to 'cascade = CascadeType.REFRESH' in Backlog.java
+//        add 'orphanRemoval = true' in Backlog.java
 
         projectTaskRepository.delete(projectTask);
     }

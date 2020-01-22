@@ -23,7 +23,7 @@ public class Backlog {
     private Project project;       // bidirectional relationships!!!
 
     //OneToMany projecttasks
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "backlog")     // "backlog" must match name of object (Backlog backlog)!!!
+    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, mappedBy = "backlog", orphanRemoval = true)     // "backlog" must match name of object (Backlog backlog)!!!
     private List<ProjectTask> projectTasks = new ArrayList<>();     // initialise array!!!
 
 
