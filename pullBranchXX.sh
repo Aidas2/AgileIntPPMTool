@@ -1,5 +1,5 @@
 #! /bin/bash
-cd /media/aidas/749AEABE9AEA7BCC/Backup_Linux/Documents/AgileIntPPMTool
+cd /home/aidas/Documents/AgileIntPPMTool
 git branch branch43
 git checkout branch43
 git add .
