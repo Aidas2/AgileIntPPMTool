@@ -9,7 +9,8 @@ import { Provider } from "react-redux";
 import store from "./store";
 import UpdateProject from "./components/Project/UpdateProject";
 import ProjectBoard from "./components/ProjectBoard/ProjectBoard";
-import AddProjectTask from "./components/ProjectBoard/ProjectTasks/AddProjectTask"; 
+import AddProjectTask from "./components/ProjectBoard/ProjectTasks/AddProjectTask";
+import UpdateProjectTask from "./components/ProjectBoard/ProjectTasks/UpdateProjectTask"; 
 
 function App() {
   return (
@@ -25,6 +26,11 @@ function App() {
           exact
           path="/addProjectTask/:id"
           component={AddProjectTask}
+        />
+        <Route
+          exact
+          path="/updateProjectTask/:backlog_id/:pt_id"
+          component={UpdateProjectTask}
         />
         </div>
       </Router>
