@@ -25,6 +25,7 @@ public class User implements UserDetails {
     @NotBlank(message = "Password field is required")
     private String password;
     @Transient
+//    @JsonIgnore // doesn't work here (cos ignores before comparing)
     private String confirmPassword;
     private Date create_At;
     private Date update_At;
