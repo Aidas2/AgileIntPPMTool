@@ -1,7 +1,6 @@
 package io.agileintelligence.ppmtool.services;
 
 import io.agileintelligence.ppmtool.domain.Backlog;
-import io.agileintelligence.ppmtool.domain.Project;
 import io.agileintelligence.ppmtool.domain.ProjectTask;
 import io.agileintelligence.ppmtool.exceptions.ProjectNotFoundException;
 import io.agileintelligence.ppmtool.repositories.BacklogRepository;
@@ -17,13 +16,14 @@ public class ProjectTaskService {
     @Autowired
     private BacklogRepository backlogRepository;
 
-    @Autowired
+    @Autowired 
     private ProjectTaskRepository projectTaskRepository;
 
     @Autowired
     private ProjectRepository projectRepository;
 
-    @Autowired  // autowired to use method findProjectByIdentifier, which already has authentication
+    @Autowired  // autowired to use method findProjectByIdentifier,
+                // which already has authentication (shortcut (performs all validations))
     private ProjectService projectService;
 
     public ProjectTask addProjectTask(String projectIdentifier, ProjectTask projectTask, String username){
@@ -68,13 +68,15 @@ public class ProjectTaskService {
     }
 
 
-    public ProjectTask findPTByProjectSequence(String backlog_id, String pt_id){
+    public ProjectTask findPTByProjectSequence(String backlog_id, String pt_id, String username){
 
         //make sure we are searching on an existing backlog
-        Backlog backlog = backlogRepository.findByProjectIdentifier(backlog_id);
-        if(backlog==null){
-            throw new ProjectNotFoundException("Project with ID: '"+backlog_id+"' does not exist");
-        }
+//        Backlog backlog = backlogRepository.findByProjectIdentifier(backlog_id);
+//        if(backlog==null){
+//            throw new ProjectNotFoundException("Project with ID: '"+backlog_id+"' does not exist");
+//        }
+        projectService.findProjectByIdentifier(backlog_id, username);   //shortcut (performs all validations)
+
 
         //make sure that our task exists
         ProjectTask projectTask = projectTaskRepository.findByProjectSequence(pt_id);
@@ -91,16 +93,16 @@ public class ProjectTaskService {
         return projectTask;
     }
 
-    public ProjectTask updateByProjectSequence(ProjectTask updatedTask, String backlog_id, String pt_id){
-        ProjectTask projectTask = findPTByProjectSequence(backlog_id, pt_id); // shortcut (performs all validations)
+    public ProjectTask updateByProjectSequence(ProjectTask updatedTask, String backlog_id, String pt_id, String username){
+        ProjectTask projectTask = findPTByProjectSequence(backlog_id, pt_id, username); // shortcut (performs all validations)
 
         projectTask = updatedTask;
 
         return projectTaskRepository.save(projectTask);
     }
 
-    public void deletePTByProjectSequence(String backlog_id, String pt_id){
-        ProjectTask projectTask = findPTByProjectSequence(backlog_id, pt_id);   // shortcut (performs all validations)
+    public void deletePTByProjectSequence(String backlog_id, String pt_id, String username){
+        ProjectTask projectTask = findPTByProjectSequence(backlog_id, pt_id, username);   // shortcut (performs all validations)
 
 //        Backlog backlog = projectTask.getBacklog();
 //        List<ProjectTask> pts = backlog.getProjectTasks();
