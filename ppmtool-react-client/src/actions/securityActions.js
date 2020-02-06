@@ -7,12 +7,12 @@ export const createNewUser = (newUser, history) => async dispatch => {
     history.push("/login");
     dispatch({
       type: GET_ERRORS,
-      payload: {}
+      payload: {}       // this is clearing errors (if everything is ok)
     });
   } catch (err) {
     dispatch({
       type: GET_ERRORS,
-      payload: err.response.data
+      payload: err.response.data  // this is displaying errors
     });
   }
 };
