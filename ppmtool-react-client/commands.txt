@@ -36,3 +36,4 @@ Reactjs code snippets (rcc rfc)
  npm install --save axios 
 
  npm install classnames
+ npm install jwt-decode
