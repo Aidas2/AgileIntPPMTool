@@ -37,3 +37,9 @@ Reactjs code snippets (rcc rfc)
 
  npm install classnames
  npm install jwt-decode
+
+
+DEPLOYING:
+sudo snap install --classic heroku
+heroku login
+heroku config --app ppmtoolap
