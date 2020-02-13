@@ -96,6 +96,14 @@ public class User implements UserDetails {
         this.update_At = update_At;
     }
 
+    public List<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
+    }
+
     @PrePersist
     protected void onCreate(){
         this.create_At = new Date();
@@ -105,15 +113,6 @@ public class User implements UserDetails {
     protected void onUpdate(){
         this.update_At = new Date();
     }
-
-    public List<Project> getProjects() {
-        return projects;
-    }
-
-    public void setProjects(List<Project> projects) {
-        this.projects = projects;
-    }
-
 
     /*
     UserDetails interface methods

@@ -23,7 +23,7 @@ public class ProjectService {
     @Autowired
     private UserRepository userRepository;
 
-    public Project saveOrUpdateProject(Project project, String username) {
+    public Project saveOrUpdateProject(Project project, String username){
 
         if(project.getId() != null){
             Project existingProject = projectRepository.findByProjectIdentifier(project.getProjectIdentifier());
@@ -34,7 +34,7 @@ public class ProjectService {
             }
         }
 
-        try {
+        try{
             User user = userRepository.findByUsername(username);
             project.setUser(user);
             project.setProjectLeader(user.getUsername());
@@ -54,12 +54,12 @@ public class ProjectService {
 
             return projectRepository.save(project);
 
-        } catch (Exception e) {
+        }catch (Exception e){
             throw new ProjectIdException("Project ID '" + project.getProjectIdentifier().toUpperCase() + "' already exists");
         }
     }
 
-    public Project findProjectByIdentifier(String projectId, String username) {
+    public Project findProjectByIdentifier(String projectId, String username){
 
         //Only want to return the project if the user looking for it is the owner
 
@@ -74,16 +74,16 @@ public class ProjectService {
         return project;
     }
 
-    public Iterable<Project> findAllProjects(String username) {
+    public Iterable<Project> findAllProjects(String username){
         return projectRepository.findAllByProjectLeader(username);
     }
 
     public void deleteProjectByIdentifier(String projectid, String username){
-        Project project = projectRepository.findByProjectIdentifier(projectid.toUpperCase());
-
-        if(project == null){
-            throw  new  ProjectIdException("Cannot Project with ID '"+projectid+"'. This project does not exist");
-        }
+//        Project project = projectRepository.findByProjectIdentifier(projectid.toUpperCase());
+//
+//        if(project == null){
+//            throw  new  ProjectIdException("Cannot Project with ID '"+projectid+"'. This project does not exist");
+//        }
 
         projectRepository.delete(findProjectByIdentifier(projectid, username));
     }

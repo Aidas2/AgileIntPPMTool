@@ -8,6 +8,7 @@ import io.agileintelligence.ppmtool.repositories.ProjectRepository;
 import io.agileintelligence.ppmtool.repositories.ProjectTaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service
 public class ProjectTaskService {
@@ -16,7 +17,7 @@ public class ProjectTaskService {
     @Autowired
     private BacklogRepository backlogRepository;
 
-    @Autowired 
+    @Autowired
     private ProjectTaskRepository projectTaskRepository;
 
     @Autowired
@@ -30,7 +31,7 @@ public class ProjectTaskService {
 
             //PTs to be added to a specific project, project != null, BL exists
 //            Backlog backlog = backlogRepository.findByProjectIdentifier(projectIdentifier);
-            Backlog backlog =  projectService.findProjectByIdentifier(projectIdentifier, username).getBacklog();
+            Backlog backlog = projectService.findProjectByIdentifier(projectIdentifier, username).getBacklog();
             System.out.println(backlog);
             projectTask.setBacklog(backlog);
 //        backlog.setProjectTask(projectTask); // redundant ?
@@ -45,15 +46,15 @@ public class ProjectTaskService {
             projectTask.setProjectSequence(backlog.getProjectIdentifier()+"-"+BacklogSequence);
             projectTask.setProjectIdentifier(projectIdentifier);
 
+            //INITIAL status when status is null
+            if(projectTask.getStatus()==""|| projectTask.getStatus()==null){
+                projectTask.setStatus("TO_DO");
+            }
+
             //INITIAL priority when priority null
             //Fix bug with priority in Spring Boot Server, needs to check null first
             if(projectTask.getPriority()==null||projectTask.getPriority()==0){ //In the future we need projectTask.getPriority()== 0 to handle the form
                 projectTask.setPriority(3);
-            }
-
-            //INITIAL status when status is null
-            if(projectTask.getStatus()==""|| projectTask.getStatus()==null){
-                projectTask.setStatus("TO_DO");
             }
 
             return projectTaskRepository.save(projectTask);

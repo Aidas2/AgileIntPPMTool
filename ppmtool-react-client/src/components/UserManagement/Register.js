@@ -100,7 +100,9 @@ class Register extends Component {
                     onChange={this.onChange}
                   />
                   {errors.password && (
-                    <div className="ivalid-feedback">{errors.password}</div>
+                    <div className="invalid-feedback">
+                      {errors.password}
+                    </div>
                   )}
                 </div>
                 <div className="form-group">

@@ -20,7 +20,7 @@ class AddProject extends Component {
     this.onChange=this.onChange.bind(this);
     this.onSubmit=this.onSubmit.bind(this);
 
-  }
+  };
 
   //life cycle hooks
   componentWillReceiveProps(nextProps) {
@@ -35,7 +35,7 @@ class AddProject extends Component {
 
   // short way (one function for all)
     onChange(e) {
-    this.setState({[e.target.name]:e.target.value})
+    this.setState({[e.target.name]:e.target.value});
   }
 
   onSubmit(e){
@@ -45,7 +45,7 @@ class AddProject extends Component {
       projectIdentifier: this.state.projectIdentifier,
       description: this.state.description,
       start_date: this.state.start_date,
-      end_date: this.state.end_date,
+      end_date: this.state.end_date
     };
     // console.log(newProject);
     this.props.createProject(newProject, this.props.history)
@@ -151,7 +151,7 @@ class AddProject extends Component {
   AddProject.propTypes = {
     createProject: PropTypes.func.isRequired,
     errors: PropTypes.object.isRequired
-  }
+  };
 
   const mapStateToProps = state => ({
     errors: state.errors

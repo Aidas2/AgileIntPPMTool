@@ -98,8 +98,8 @@ public class ProjectTask {
         return projectIdentifier;
     }
 
-    public void setProjectIdentifier(String projectIdentifer) {
-        this.projectIdentifier = projectIdentifer;
+    public void setProjectIdentifier(String projectIdentifier) {
+        this.projectIdentifier = projectIdentifier;
     }
 
     public Date getCreate_At() {
@@ -146,6 +146,7 @@ public class ProjectTask {
                 ", status='" + status + '\'' +
                 ", priority=" + priority +
                 ", dueDate=" + dueDate +
+                ", backlog=" + backlog +
                 ", projectIdentifier='" + projectIdentifier + '\'' +
                 ", create_At=" + create_At +
                 ", update_At=" + update_At +
