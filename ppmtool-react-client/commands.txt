@@ -42,4 +42,5 @@ Reactjs code snippets (rcc rfc)
 DEPLOYING:
 sudo snap install --classic heroku
 heroku login
-heroku config --app ppmtoolap
+heroku config --app ppmtoolaidas
+npm run build
